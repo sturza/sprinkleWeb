@@ -1,0 +1,32 @@
+.panel-container{
+  position: relative;
+  display: inline-block;
+  margin: 0 10px 20px 10px;
+}
+
+.temperature-text {
+  position: absolute;
+  left: -15px;
+  top: 25%;
+  width: 100%;
+}
+.humidity-text{
+  position: absolute;
+  left: 0;
+  top: 15%;
+  width: 100%;
+}
+
+img{
+  height: 200px;
+  width: 200px;
+}
+
+@media screen and (max-width: 1120px) {
+
+  img{
+    height: 172px;
+    width: 172px;
+  }
+}
+

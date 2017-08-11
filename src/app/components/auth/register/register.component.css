@@ -1,0 +1,12 @@
+.valign-wrapper{
+  background-color: royalblue;
+}
+.form-content{
+  background-color: white;
+  padding: 20px;
+}
+.login-switch{
+  width: 100%;
+  background-color: darkorange;
+  margin-top: 20px;
+}

@@ -1,0 +1,29 @@
+<div class="row valign-wrapper center-align">
+  <div class="col s12">
+    <div class="row">
+      <div class="col s4 offset-s4">
+        <div class="form-content">
+          <h4 style="margin-bottom: 20px">Sprinkle</h4>
+          <p style="margin-bottom: 35px">Create your account</p>
+          <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" name="email" ngModel required email>
+                <label for="email"> Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate" name="password" ngModel required>
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-teal" [disabled]="!registerForm.valid">Sign up<i
+              class="material-icons right">send</i></button>
+          </form>
+        </div>
+        <button class="login-switch btn z-depth-4" routerLink="/login">Login into your account</button>
+      </div>
+    </div>
+  </div>
+</div>

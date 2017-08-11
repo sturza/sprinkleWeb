@@ -1,0 +1,24 @@
+.panel-list {
+  height: 80%;
+}
+
+.tabs-view {
+
+}
+
+.search-field {
+  margin-bottom: -20px;
+}
+
+.material-icons {
+  font-size: 32px;
+}
+
+.add-circle {
+  color: black;
+}
+
+.add-circle:hover{
+  color: dodgerblue;
+}
+

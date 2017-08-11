@@ -1,0 +1,5 @@
+<app-welcome (userEntered)="userEntered=true" *ngIf="!userEntered">  </app-welcome>
+<router-outlet *ngIf="userEntered"> </router-outlet>
+
+
+

@@ -1,0 +1,27 @@
+<!-- Modal Structure -->
+<div id="add-tab-modal" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <h4>Add a tab</h4>
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <select class="icons" materialize="material_select" [materializeSelectOptions]="availableTabs">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="" data-icon="/assets/tomato.jpg" class="left circle">example 1</option>
+        </select>
+        <label>Available tabs</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+  </div>
+</div>
+<div class="row">
+  <table class="bordered highlight centered responsive-table">
+    <tbody>
+    <app-tab-item *ngFor="let tab of tabs" [tab]="tab"></app-tab-item>
+    </tbody>
+  </table>
+  <a style="cursor: pointer;" class="modal-trigger" (click)="openModal()"><i class="material-icons add-circle" style="margin-top: 12px;" >add_circle</i></a>
+</div>

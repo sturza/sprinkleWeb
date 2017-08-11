@@ -1,0 +1,8 @@
+nav {
+  background-color: royalblue;
+}
+
+nav ul li {
+  margin: 0 12px;
+  padding: 0 4px;
+}
