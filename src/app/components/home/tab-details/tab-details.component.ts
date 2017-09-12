@@ -39,4 +39,10 @@ export class TabDetailsComponent implements OnInit, OnDestroy{
   ngOnDestroy(){
     console.log('onDestroy');
   }
+  onRemoveTab() {
+    this.tabService.removeTab(this.id);
+  }
+  onWaterTab() {
+
+  }
 }

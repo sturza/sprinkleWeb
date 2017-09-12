@@ -8,7 +8,6 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AboutSprinkleComponent } from './components/about-sprinkle/about-sprinkle.component';
 import { TabItemComponent } from './components/home/tab-list/tab-item/tab-item.component';
 import { TabListComponent } from './components/home/tab-list/tab-list.component';
 import { TabService } from './services/tab.service';
@@ -25,7 +24,6 @@ declarations: [
     WelcomeComponent,
     HomeComponent,
     HeaderComponent,
-    AboutSprinkleComponent,
     TabListComponent,
     TabItemComponent,
     TabDetailsComponent,

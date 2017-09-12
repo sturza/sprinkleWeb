@@ -6,14 +6,16 @@ import  'rxjs/Rx';
 @Injectable()
 export class DatabaseService {
 
-  private url='https://sprinkle-sturza.c9users.io/';
+  private url = 'https://sprinkle-sturza.c9users.io';
 
   constructor(private http: Http) {}
+
   postTab(tab: any) {
-    return this.http.post(this.url+'stats',tab)
+    return this.http.post(this.url + '/add-stat/', tab)
   }
+
   getTabs() {
-    return this.http.get(this.url + 'stats')
+    return this.http.get(this.url + '/stats/')
       .map(
         (response: Response) => {
           return response.json();
@@ -25,7 +27,10 @@ export class DatabaseService {
         }
       );
   }
-  deleteTab(id: number){
 
-    }
+  deleteTab(tabId: number) {
+    const deleteJson = { id: tabId };
+    return this.http.delete(this.url + '/delete-stat/', deleteJson);
+  }
+
 }

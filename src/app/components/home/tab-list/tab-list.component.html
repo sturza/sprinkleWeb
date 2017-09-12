@@ -4,17 +4,18 @@
     <h4>Add a tab</h4>
     <div class="row">
       <div class="input-field col s12 m6">
-        <select class="icons" materialize="material_select" [materializeSelectOptions]="availableTabs">
+        <select class="icons" materialize="material_select" [materializeSelectOptions]="availableTabs" [(ngModel)]="selectedTab">
           <option value="" disabled selected>Choose your option</option>
-          <option value="" data-icon="/assets/tomato.jpg" class="left circle">example 1</option>
+          <option *ngFor="let tab of availableTabs; let tabIndex = index" [value]="tabIndex"
+                  [attr.data-icon]="tab.image" class="left circle"> {{ tab.title }} </option>
         </select>
         <label>Available tabs</label>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="onAddTab()">Add</a>
   </div>
 </div>
 <div class="row">

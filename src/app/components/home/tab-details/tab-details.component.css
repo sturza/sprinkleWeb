@@ -1,3 +1,6 @@
+.tab-details-container{
+  height: calc(100vh - 128px);
+}
 .panel-container{
   position: relative;
   display: inline-block;

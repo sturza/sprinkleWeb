@@ -1,9 +1,5 @@
-.panel-list {
-  height: 80%;
-}
-
 .tabs-view {
-
+  height: calc(100vh - 128px);
 }
 
 .search-field {

@@ -17,7 +17,12 @@ export class TabListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   modalActions = new EventEmitter<string|MaterializeAction>();
 
-  availableTabs = [];
+  selectedTab = '';
+
+  availableTabs = [
+    new Tab(null, 'cetitluvreitu', '/assets/tomato.jpg', null, null, null),
+    new Tab(null, 'oricealttitlu', '/assets/salad.jpg', null, null, null)
+  ];
 
   constructor(private tabService: TabService) {
   }
@@ -37,6 +42,9 @@ export class TabListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+  onAddTab() {
+    this.tabService.addTab(this.availableTabs[+this.selectedTab]);
   }
 
 }

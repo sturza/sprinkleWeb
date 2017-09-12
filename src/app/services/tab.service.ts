@@ -31,10 +31,14 @@ export class TabService {
   }
 
   addTab(tab: Tab){
-    this.databaseService.postTab(tab);
+    this.databaseService.postTab(tab).subscribe(
+      response => console.log(response)
+    );
   }
 
-  deleteTab(index: number){
-    this.databaseService.deleteTab(this.tabs[index].id);
+  removeTab(id: number) {
+    this.databaseService.deleteTab(id).subscribe(
+      response => console.log(response)
+    );
   }
 }
