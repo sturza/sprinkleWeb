@@ -1,5 +1,5 @@
-<tr>
-  <td style="cursor: pointer" [routerLink]="['/tab', tab.id]"  routerLinkActive="active" class="item-container">
+<li>
+  <a class="waves-effect" [routerLink]="['/tab', tab.id]"  routerLinkActive="active">
     <img class="activator" [src]="tab.image" style="height: 48px;">{{ tab.title }}
-  </td>
-</tr>
+  </a>
+</li>

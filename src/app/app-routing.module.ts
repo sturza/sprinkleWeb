@@ -5,14 +5,16 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 import { TabDetailsComponent } from './components/home/tab-details/tab-details.component';
-import { TabStartComponent } from "app/components/home/tab-start/tab-start.component";
+import { TabStartComponent } from './components/home/tab-start/tab-start.component';
 
 
-const appRoutes: Routes=[
+const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard], children: [
     {path: '', component: TabStartComponent },
-    {path: 'tab/:id',component: TabDetailsComponent}
-  ]}
+    {path: 'tab/:id', component: TabDetailsComponent}
+  ]},
+
+  { path: '**', redirectTo: '' }
 
 ];
 @NgModule({
@@ -20,6 +22,6 @@ const appRoutes: Routes=[
   exports: [RouterModule],
   providers: [AuthGuard]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }

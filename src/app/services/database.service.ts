@@ -29,8 +29,8 @@ export class DatabaseService {
   }
 
   deleteTab(tabId: number) {
-    const deleteJson = { id: tabId };
-    return this.http.delete(this.url + '/delete-stat/', deleteJson);
+    console.log(tabId);
+    return this.http.delete(this.url + '/delete-stat/' + tabId + '/');
   }
 
 }

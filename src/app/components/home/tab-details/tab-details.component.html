@@ -1,47 +1,47 @@
 <div class="tab-details-container">
-<div class="center-wrapper">
-  <div class="center-content">
-    <div class="row">
-      <div class="col s12">
-        <h3>{{ (tabPromise | async)?.title }}</h3>
+  <div class="center-wrapper">
+    <div class="center-content">
+      <div class="row">
+        <div class="col s12">
+          <h3>{{ (tabPromise | async)?.title }}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="panel-container">
+            <img class="circle responsive-img" src="/assets/temperature.png">
+            <h4 class="temperature-text">{{ (tabPromise | async)?.temperature }}</h4>
+            <h5>Soil temperature</h5>
+          </div>
+          <div class="panel-container">
+            <img class="circle responsive-img" src="/assets/humidity.png">
+            <h4 class="humidity-text">{{ (tabPromise | async)?.humidity }}</h4>
+            <h5>Soil humidity</h5>
+          </div>
+          <div class="panel-container">
+            <img class="circle responsive-img" src="/assets/temperature.png">
+            <h4 class="temperature-text">{{ (tabPromise | async)?.temperature }}</h4>
+            <h5>Air temperature</h5>
+          </div>
+          <div class="panel-container">
+            <img class="circle responsive-img" src="/assets/humidity.png">
+            <h4 class="humidity-text">{{ (tabPromise | async)?.humidity }}</h4>
+            <h5>Air humidity</h5>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col s12">
-        <div class="panel-container">
-          <img class="circle responsive-img" src="/assets/temperature.png">
-          <h4 class="temperature-text">{{ (tabPromise | async)?.temperature }}</h4>
-          <h5>Soil temperature</h5>
+  </div>
+  <div class="row no-margin-bottom">
+    <div class="col s12">
+      <div class="row">
+        <div class="col s6 left-align">
+          <button class="btn waves-effect red darken-2" (click)="onRemoveTab()">Remove</button>
         </div>
-        <div class="panel-container">
-          <img class="circle responsive-img" src="/assets/humidity.png">
-          <h4 class="humidity-text">{{ (tabPromise | async)?.humidity }}</h4>
-          <h5>Soil humidity</h5>
-        </div>
-        <div class="panel-container">
-          <img class="circle responsive-img" src="/assets/temperature.png">
-          <h4 class="temperature-text">{{ (tabPromise | async)?.temperature }}</h4>
-          <h5>Air temperature</h5>
-        </div>
-        <div class="panel-container">
-          <img class="circle responsive-img" src="/assets/humidity.png">
-          <h4 class="humidity-text">{{ (tabPromise | async)?.humidity }}</h4>
-          <h5>Air humidity</h5>
+        <div class="col s6 right-align">
+          <button class="btn waves-effect blue darken-2" (click)="onWaterTab()">Water it!</button>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col s12">
-    <div class="row">
-      <div class="col s6 left-align">
-        <button class="btn waves-effect" (click)="onRemoveTab()">Remove</button>
-      </div>
-      <div class="col s6 right-align">
-        <button class="btn waves-effect" (click)="onWaterTab()">Water it!</button>
-      </div>
-    </div>
-  </div>
-</div>
 </div>

@@ -1,3 +1,36 @@
 .dropdown-icon{
   height: 32px;
 }
+
+.modal {
+  max-width: 450px;
+}
+
+.modal-content {
+  padding-bottom: 0;
+}
+
+.side-nav {
+  position: relative;
+  width: auto;
+  height: calc(100vh - 174px);
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+.material-icons {
+  font-size: 32px;
+}
+
+.add-button {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.add-circle {
+  color: black;
+}
+
+.add-circle:hover{
+  color: dodgerblue;
+}
