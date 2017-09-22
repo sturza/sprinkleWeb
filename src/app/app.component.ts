@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
 
   //set this to false for production deployment
-  userEntered = true;
+  userEntered = false;
 
   constructor(private tabService: TabService)  {}
 

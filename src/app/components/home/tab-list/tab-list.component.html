@@ -1,24 +1,10 @@
 <!-- Modal Structure -->
-<div id="add-tab-modal" class="modal" materialize="modal"
+<div id="tab-modal" class="modal" materialize="modal" [ngSwitch]="displayedModal"
      [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
-  <div class="modal-content">
-    <h4>Add a tab</h4>
-    <div class="row">
-      <div class="input-field col s12">
-        <select class="icons" materialize="material_select" [materializeSelectOptions]="availableTabs" [(ngModel)]="selectedTab">
-          <option value="" disabled selected>Choose your option</option>
-          <option *ngFor="let tab of availableTabs; let tabIndex = index" [value]="tabIndex"
-                  [attr.data-icon]="tab.image" class="left circle"> {{ tab.title }} </option>
-        </select>
-        <label>Available tabs</label>
-      </div>
-    </div>
+        <app-select-modal *ngSwitchCase="'select'" [modalActions]="modalActions"
+                          (onCreateModal)="onCreateModal()"></app-select-modal>
+        <app-create-modal *ngSwitchCase="'create'" (onSelectModal)="onSelectModal()"></app-create-modal>
   </div>
-  <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-    <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="onAddTab()">Add</a>
-  </div>
-</div>
 <div class="row">
   <form>
     <div class="input-field search-field">

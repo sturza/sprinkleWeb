@@ -16,6 +16,7 @@ export class TabService {
       this.databaseService.getTabs().subscribe(
         (tabs) => {
           this.tabs = tabs;
+          console.log(tabs);
           this.tabsSubject.next(this.tabs.slice());
         },
         (error)=> console.log(error)

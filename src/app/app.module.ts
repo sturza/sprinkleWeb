@@ -11,12 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { TabItemComponent } from './components/home/tab-list/tab-item/tab-item.component';
 import { TabListComponent } from './components/home/tab-list/tab-list.component';
 import { TabService } from './services/tab.service';
-import { AuthModule } from './components/auth/auth.module';
-import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { DatabaseService } from './services/database.service';
 import { TabDetailsComponent } from './components/home/tab-details/tab-details.component';
 import { TabStartComponent } from './components/home/tab-start/tab-start.component';
+import { SelectModalComponent } from './components/home/tab-list/tab-modals/select-modal/select-modal.component';
+import { CreateModalComponent } from './components/home/tab-list/tab-modals/create-modal/create-modal.component';
 
 @NgModule({
 declarations: [
@@ -27,7 +27,9 @@ declarations: [
     TabListComponent,
     TabItemComponent,
     TabDetailsComponent,
-    TabStartComponent
+    TabStartComponent,
+    SelectModalComponent,
+    CreateModalComponent
 
   ],
   imports: [
@@ -35,10 +37,9 @@ declarations: [
     HttpModule,
     FormsModule,
     MaterializeModule,
-    AuthModule,
     AppRoutingModule
   ],
-  providers: [TabService, AuthService,DatabaseService],
+  providers: [TabService,DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

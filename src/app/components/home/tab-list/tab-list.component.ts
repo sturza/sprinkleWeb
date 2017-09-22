@@ -17,21 +17,14 @@ export class TabListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   modalActions = new EventEmitter<string|MaterializeAction>();
 
-  selectedTab = '';
+  displayedModal = 'select';
 
-  availableTabs = [
-    new Tab(null, 'cetitluvreitu', '/assets/tomato.jpg', null, null, null),
-    new Tab(null, 'oricealttitlu', '/assets/salad.jpg', null, null, null)
-  ];
 
   constructor(private tabService: TabService) {
   }
 
   openModal() {
     this.modalActions.emit({action:"modal",params:['open']});
-  }
-  closeModal() {
-    this.modalActions.emit({action:"modal",params:['close']});
   }
 
   ngOnInit() {
@@ -40,11 +33,16 @@ export class TabListComponent implements OnInit, OnDestroy {
     );
     this.tabs = this.tabService.getTabs();
   }
+  onCreateModal(){
+    this.displayedModal = 'create';
+    console.log(this.displayedModal);
+  }
+  onSelectModal(){
+    this.displayedModal = 'select';
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  onAddTab() {
-    this.tabService.addTab(this.availableTabs[+this.selectedTab]);
-  }
+
 
 }
