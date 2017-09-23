@@ -1,4 +1,4 @@
-export class Tab {
+export class Stat {
 
   public id: number;
   public humAir: string;

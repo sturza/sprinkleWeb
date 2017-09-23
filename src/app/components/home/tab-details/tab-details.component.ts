@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TabService } from '../../../services/tab.service';
-import { Tab } from '../../../models/tab.model';
+import { ModuleService } from '../../../services/module.service';
+import { Module } from '../../../models/module.model';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -14,24 +14,23 @@ export class TabDetailsComponent implements OnInit, OnDestroy{
 
   private id: number;
 
-  tabPromise: Observable<Tab> ;
+  tabPromise: Observable<Module> ;
   subscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private router: Router, private tabService: TabService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private moduleService: ModuleService) {}
 
   ngOnInit() {
     this.route.params.subscribe(
       (params) => {
         this.id = +params['id'];
         this.tabPromise = new Observable(observer => {
-          console.log('tabPromise with id ' + this.id);
-          this.subscription = this.tabService.tabsSubject.subscribe(
+          this.subscription = this.moduleService.modulesSubject.subscribe(
             (tabs) => {
-              const tab = this.tabService.getTab(this.id);
+              const tab = this.moduleService.getModule(this.id);
               observer.next(tab);
             }
           );
-          observer.next(this.tabService.getTab(this.id));
+          observer.next(this.moduleService.getModule(this.id));
         });
       }
     );
@@ -40,9 +39,9 @@ export class TabDetailsComponent implements OnInit, OnDestroy{
     console.log('onDestroy');
   }
   onRemoveTab() {
-    this.tabService.removeTab(this.id);
+    this.moduleService.removeModule(this.id);
   }
   onWaterTab() {
-
+    this.moduleService.waterModule(this.id);
   }
 }

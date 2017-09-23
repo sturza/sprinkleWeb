@@ -2,12 +2,12 @@
   <h4>Add a tab</h4>
   <div class="row">
     <div class="input-field col s9">
-      <select class="icons" materialize="material_select" [materializeSelectOptions]="availableTabs" [(ngModel)]="selectedTab">
+      <select class="icons" materialize="material_select" [materializeSelectOptions]="availableStats" [(ngModel)]="selectedStat">
         <option value="" disabled selected>Choose your option</option>
-        <option *ngFor="let tab of availableTabs; let tabIndex = index" [value]="tabIndex"
-                [attr.data-icon]="tab.image" class="left circle"> {{ tab.title }} </option>
+        <option *ngFor="let stat of availableStats; let statIndex = index" [value]="statIndex"
+                [attr.data-icon]="stat.imagePath" class="left circle"> {{ stat.title }} </option>
       </select>
-      <label>Available tabs</label>
+      <label>Available modules</label>
     </div>
     <div class="col s3 right-align">
       <button class="btn waves-effect" (click)="onCreate()">Create</button>

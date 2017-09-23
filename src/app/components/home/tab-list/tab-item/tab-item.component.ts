@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Tab } from '../../../../models/tab.model';
+import { Module } from '../../../../models/module.model';
 
 @Component({
   selector: 'app-tab-item',
@@ -8,7 +8,7 @@ import { Tab } from '../../../../models/tab.model';
 })
 export class TabItemComponent implements OnInit {
 
-  @Input() tab: Tab;
+  @Input() tab: Module;
 
   constructor() { }
 

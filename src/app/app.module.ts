@@ -10,13 +10,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TabItemComponent } from './components/home/tab-list/tab-item/tab-item.component';
 import { TabListComponent } from './components/home/tab-list/tab-list.component';
-import { TabService } from './services/tab.service';
+import { ModuleService } from './services/module.service';
 import { FormsModule } from '@angular/forms';
 import { DatabaseService } from './services/database.service';
 import { TabDetailsComponent } from './components/home/tab-details/tab-details.component';
 import { TabStartComponent } from './components/home/tab-start/tab-start.component';
-import { SelectModalComponent } from './components/home/tab-list/tab-modals/select-modal/select-modal.component';
-import { CreateModalComponent } from './components/home/tab-list/tab-modals/create-modal/create-modal.component';
+import { SelectModalComponent } from './components/home/tab-list/tab-modals/add-module-modal/add-module-modal.component';
+import { CreateModalComponent } from './components/home/tab-list/tab-modals/create-stat-modal/create-stat-modal.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { StatService } from './services/stat.service';
 
 @NgModule({
 declarations: [
@@ -30,16 +32,16 @@ declarations: [
     TabStartComponent,
     SelectModalComponent,
     CreateModalComponent
-
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     MaterializeModule,
+    FileUploadModule,
     AppRoutingModule
   ],
-  providers: [TabService,DatabaseService],
+  providers: [ModuleService,StatService,DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

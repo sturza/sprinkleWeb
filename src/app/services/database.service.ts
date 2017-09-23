@@ -6,15 +6,42 @@ import  'rxjs/Rx';
 @Injectable()
 export class DatabaseService {
 
-  private url = 'https://sprinkle-sturza.c9users.io';
+  public url = 'http://sprinkle-sturza.c9users.io';
 
   constructor(private http: Http) {}
 
-  postTab(tab: any) {
+  postModule(tab: any) {
+    return this.http.post(this.url + '/create-module/', tab)
+  }
+
+  getModules() {
+    return this.http.get(this.url + '/get-modules/')
+      .map(
+        (response: Response) => {
+          return response.json();
+        }
+      )
+      .catch(
+        (error: Response) => {
+          return Observable.throw('Couldn\'t get tabs from server');
+        }
+      );
+  }
+  deleteModule(tabId: number) {
+    console.log(tabId);
+    return this.http.delete(this.url + '/delete-module/' + tabId);
+  }
+
+  waterModule(tabId: any) {
+    return this.http.options(this.url + '/activate-pomp/' + tabId);
+
+  }
+
+  postStat(tab: any) {
     return this.http.post(this.url + '/add-stat/', tab)
   }
 
-  getTabs() {
+  getStats() {
     return this.http.get(this.url + '/stats/')
       .map(
         (response: Response) => {
@@ -27,10 +54,9 @@ export class DatabaseService {
         }
       );
   }
-
-  deleteTab(tabId: number) {
+  deleteStat(tabId: number) {
     console.log(tabId);
-    return this.http.delete(this.url + '/delete-stat/' + tabId + '/');
+    return this.http.delete(this.url + '/delete-stat/' + tabId);
   }
 
 }

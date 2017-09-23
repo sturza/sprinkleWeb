@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TabService } from './services/tab.service';
+import { ModuleService } from './services/module.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +13,9 @@ export class AppComponent implements OnInit {
   //set this to false for production deployment
   userEntered = false;
 
-  constructor(private tabService: TabService)  {}
+  constructor(private tabService: ModuleService)  {}
 
   ngOnInit(): void {
-    this.tabService.retrieveTabs();
+    this.tabService.retrieveModules();
   }
 }

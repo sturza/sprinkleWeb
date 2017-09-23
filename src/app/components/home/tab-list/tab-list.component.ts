@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
-import { Tab } from '../../../models/tab.model';
-import { TabService } from '../../../services/tab.service';
+import { ModuleService } from '../../../services/module.service';
 import { Subscription } from 'rxjs/Subscription';
 import { MaterializeAction } from 'angular2-materialize';
+
+import {Observable} from 'rxjs/Rx';
+import { Module } from '../../../models/module.model';
 
 @Component({
   selector: 'app-tab-list',
@@ -12,15 +14,14 @@ import { MaterializeAction } from 'angular2-materialize';
 
 export class TabListComponent implements OnInit, OnDestroy {
 
-  tabs: Tab[] = [];
+  tabs: Module[] = [];
 
   subscription: Subscription;
   modalActions = new EventEmitter<string|MaterializeAction>();
 
   displayedModal = 'select';
 
-
-  constructor(private tabService: TabService) {
+  constructor(private moduleService: ModuleService) {
   }
 
   openModal() {
@@ -28,10 +29,17 @@ export class TabListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.tabService.tabsSubject.subscribe(
+    this.subscription = this.moduleService.modulesSubject.subscribe(
       (tabs) => this.tabs = tabs
     );
-    this.tabs = this.tabService.getTabs();
+    this.tabs = this.moduleService.getModules();
+    console.log(this.tabs);
+
+        let tabsObservable = Observable.timer(0,5000);
+        tabsObservable.subscribe(t => {
+          this.tabs = this.moduleService.getModules();
+            console.log(this.tabs);
+        });
   }
   onCreateModal(){
     this.displayedModal = 'create';

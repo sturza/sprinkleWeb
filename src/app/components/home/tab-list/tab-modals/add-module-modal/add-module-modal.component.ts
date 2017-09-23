@@ -1,26 +1,27 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Tab } from '../../../../../models/tab.model';
-import { TabService } from '../../../../../services/tab.service';
+import { Module } from '../../../../../models/module.model';
+import { StatService } from '../../../../../services/stat.service';
 
 @Component({
   selector: 'app-select-modal',
-  templateUrl: './select-modal.component.html',
-  styleUrls: ['./select-modal.component.css']
+  templateUrl: './add-module-modal.component.html',
+  styleUrls: ['./add-module-modal.component.css']
 })
 export class SelectModalComponent implements OnInit {
+  moduleService: any;
 
   @Input() modalActions: EventEmitter<any>;
 
-  selectedTab = '';
+  selectedStat = '';
 
-  availableTabs = [
-    new Tab(null, 'cetitluvreitu', '/assets/tomato.jpg', null, null, null),
-    new Tab(null, 'oricealttitlu', '/assets/salad.jpg', null, null, null)
+  availableStats = [
+    new Module(1, 'cetitluvreitu', 23, "43%", "52%"),
+    new Module(2, 'oricealttitlu', 24.2, "47%", "51%")
   ];
 
   @Output() onCreateModal: EventEmitter<any> = new EventEmitter();
 
-  constructor(private tabService: TabService){ }
+  constructor(private statService: StatService){ }
 
   closeModal() {
     this.modalActions.emit({action:"modal",params:['close']});
@@ -28,9 +29,8 @@ export class SelectModalComponent implements OnInit {
 
   ngOnInit() {
   }
-
   onAddTab() {
-    this.tabService.addTab(this.availableTabs[+this.selectedTab]);
+    this.moduleService.createModule(this.availableStats[+this.selectedStat]);
     this.closeModal();
   }
 
