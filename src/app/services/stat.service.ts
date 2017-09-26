@@ -6,7 +6,6 @@ import { Stat } from '../models/stat.model';
 @Injectable()
 export class StatService {
 
-
   private stats: Stat[] = [];
 
   public statsSubject = new Subject<Stat[]>();
@@ -28,10 +27,10 @@ export class StatService {
   }
 
   getStat(id: number){
-    return this.stats.find(tab => tab.id === id);
+    return this.stats.find(stat => stat.ID === id);
   }
 
-  addStat(stat: Stat){
+  createStat(stat: any){
     this.databaseService.postStat(stat).subscribe(
       response => console.log(response)
     );

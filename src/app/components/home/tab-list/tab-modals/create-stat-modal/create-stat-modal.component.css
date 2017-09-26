@@ -1,0 +1,24 @@
+.card-panel {
+  padding: 1rem 1.25rem;
+  margin: 0;
+}
+
+h5 {
+  position: relative;
+  text-align: left;
+  padding-left: 3rem;
+  line-height: 140%;
+  margin: 0;
+}
+
+.material-icons {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 2.34rem;
+}
+
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}

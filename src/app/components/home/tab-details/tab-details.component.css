@@ -1,4 +1,5 @@
 .tab-details-container{
+  width: 100%;
   height: calc(100vh - 128px);
 }
 .panel-container{
@@ -21,15 +22,15 @@
 }
 
 img{
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
 }
 
 @media screen and (max-width: 1120px) {
 
   img{
-    height: 172px;
-    width: 172px;
+    height: 176px;
+    width: 226px;
   }
 }
 

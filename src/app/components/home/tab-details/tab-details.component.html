@@ -9,37 +9,93 @@
       <div class="row">
         <div class="col s12">
           <div class="panel-container">
-            <img class="circle responsive-img" src="/assets/temperature.png">
-            <h4 class="temperature-text">{{ (tabPromise | async)?.temperature }}</h4>
+            <div *ngIf="(tabPromise | async)?.temp < 15">
+              <img class="circle responsive-img" src="/assets/temperatura_gol.png">
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.temp > 15">
+              <div *ngIf="(tabPromise | async)?.temp < 25">
+                <img class="circle responsive-img" src="/assets/temp2.png">
+              </div>
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.temp > 25">
+              <div *ngIf="(tabPromise | async)?.temp < 35">
+                <img class="circle responsive-img" src="/assets/temperatura_jumatate.png">
+              </div>
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.temp > 35">
+              <img class="circle responsive-img" src="/assets/temperatura_plin.png">
+            </div>
+
+            <h4 class="temperature-text">{{ (tabPromise | async)?.temp }}</h4>
             <h5>Soil temperature</h5>
           </div>
+
           <div class="panel-container">
-            <img class="circle responsive-img" src="/assets/humidity.png">
-            <h4 class="humidity-text">{{ (tabPromise | async)?.humidity }}</h4>
+            <div *ngIf="(tabPromise | async)?.humSoil < 15">
+              <img class="circle responsive-img" src="/assets/umiditate_0.png">
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.humSoil > 30">
+              <div *ngIf="(tabPromise | async)?.humSoil < 50">
+                <img class="circle responsive-img" src="/umiditate_1_sfert.png">
+              </div>
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.humSoil > 50">
+              <div *ngIf="(tabPromise | async)?.humSoil < 90">
+                <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+              </div>
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.humSoil > 90">
+              <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
+            </div>
+
+            <h4 class="humidity-text">{{ (tabPromise | async)?.humSoil }}</h4>
             <h5>Soil humidity</h5>
           </div>
+
           <div class="panel-container">
-            <img class="circle responsive-img" src="/assets/temperature.png">
-            <h4 class="temperature-text">{{ (tabPromise | async)?.temperature }}</h4>
-            <h5>Air temperature</h5>
+            <div *ngIf="(tabPromise | async)?.humAir  < 15">
+              <img class="circle responsive-img" src="/assets/umiditate_0.png">
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.humAir  > 30">
+              <div *ngIf="(tabPromise | async)?.humAir < 50">
+                <img class="circle responsive-img" src="/umiditate_1_sfert.png">
+              </div>
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.humAir  > 50">
+              <div *ngIf="(tabPromise | async)?.humAir  < 90">
+                <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+              </div>
+            </div>
+
+            <div *ngIf="(tabPromise | async)?.humAir  > 90">
+              <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
+            </div>
+            <div class="panel-container">
+              <h4 class="humidity-text">{{ (tabPromise | async)?.humAir }}</h4>
+              <h5>Air humidity</h5>
+            </div>
           </div>
-          <div class="panel-container">
-            <img class="circle responsive-img" src="/assets/humidity.png">
-            <h4 class="humidity-text">{{ (tabPromise | async)?.humidity }}</h4>
-            <h5>Air humidity</h5>
-          </div>
+
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row no-margin-bottom">
-    <div class="col s12">
-      <div class="row">
-        <div class="col s6 left-align">
-          <button class="btn waves-effect red darken-2" (click)="onRemoveTab()">Remove</button>
-        </div>
-        <div class="col s6 right-align">
-          <button class="btn waves-effect blue darken-2" (click)="onWaterTab()">Water it!</button>
+      <div class="row no-margin-bottom">
+        <div class="col s12">
+          <div class="row">
+            <div class="col s6 left-align">
+              <button class="btn waves-effect red darken-2" (click)="onRemoveTab()">Remove</button>
+            </div>
+            <div class="col s6 right-align">
+              <button class="btn waves-effect blue darken-2" (click)="onWaterTab()">Water it!</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

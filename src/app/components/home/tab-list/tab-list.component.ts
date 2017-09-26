@@ -34,12 +34,6 @@ export class TabListComponent implements OnInit, OnDestroy {
     );
     this.tabs = this.moduleService.getModules();
     console.log(this.tabs);
-
-        let tabsObservable = Observable.timer(0,5000);
-        tabsObservable.subscribe(t => {
-          this.tabs = this.moduleService.getModules();
-            console.log(this.tabs);
-        });
   }
   onCreateModal(){
     this.displayedModal = 'create';

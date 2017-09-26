@@ -1,0 +1,49 @@
+<div class="modal-content">
+  <h4>Create a stat</h4>
+    <div class="row">
+      <form #statForm="ngForm" (keypress)="formChanged()">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="title" type="text" class="validate" name="title" ngModel required>
+            <label for="title">Title</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="temp" type="text" class="validate" name="temp" ngModel required>
+            <label for="temp">Temperature</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="humAir" type="text" class="validate" name="humAir" ngModel required>
+            <label for="humAir">Air humidity</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="humSoil" type="text" class="validate" name="humSoil" ngModel required>
+            <label for="humSoil">Soil humidity</label>
+          </div>
+        </div>
+        <div [ngClass]="{'row': true, 'no-margin-bottom': statForm.valid && submitPressed}">
+          <div class="file-field input-field col s12">
+            <div class="btn">
+              <span>Image</span>
+              <input type="file" ng2FileSelect [uploader]="imageUploader">
+            </div>
+            <div class="file-path-wrapper">
+              <input #imageInput class="file-path validate" type="text" name="imagePath" ngModel>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="statForm.invalid && submitPressed" class="row no-margin-bottom">
+          <div class="card-panel red">
+            <h5 class="white-text"><i class="material-icons">error</i>ERROR</h5>
+            <p class="white-text">The form is invalid</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<div class="modal-footer">
+  <a class="waves-effect waves-green btn-flat" (click)="onSelect()">Back</a>
+  <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="onCreateTab(statForm)">Create</a>
+</div>

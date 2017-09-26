@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Module } from '../../../../../models/module.model';
 import { StatService } from '../../../../../services/stat.service';
+import { Subscription } from 'rxjs/Subscription';
+import { ModuleService } from '../../../../../services/module.service';
 
 @Component({
   selector: 'app-select-modal',
@@ -8,26 +9,30 @@ import { StatService } from '../../../../../services/stat.service';
   styleUrls: ['./add-module-modal.component.css']
 })
 export class SelectModalComponent implements OnInit {
-  moduleService: any;
 
   @Input() modalActions: EventEmitter<any>;
 
   selectedStat = '';
 
-  availableStats = [
-    new Module(1, 'cetitluvreitu', 23, "43%", "52%"),
-    new Module(2, 'oricealttitlu', 24.2, "47%", "51%")
-  ];
+  subscription: Subscription;
+
+  availableStats = [];
 
   @Output() onCreateModal: EventEmitter<any> = new EventEmitter();
 
-  constructor(private statService: StatService){ }
+  constructor(private statService: StatService, private moduleService: ModuleService){ }
 
   closeModal() {
     this.modalActions.emit({action:"modal",params:['close']});
   }
 
   ngOnInit() {
+    this.subscription = this.statService.statsSubject.subscribe(
+      (stats) => this.availableStats = stats
+    );
+    this.availableStats = this.statService.getStats();
+    console.log(this.availableStats);
+
   }
   onAddTab() {
     this.moduleService.createModule(this.availableStats[+this.selectedStat]);

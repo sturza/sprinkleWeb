@@ -1,16 +1,20 @@
+import { Stat } from './stat.model';
+
 export class Module {
 
-  public id: number;
+  public ID: number;
   public title: string;
   public temp: number;
-  public humAir: string;
-  public humSoil: string;
+  public humAir: number;
+  public humSoil: number;
+  public stat: Stat;
 
-  constructor(id: number, title: string, temp: number, humAir: string, humSoil: string) {
-    this.id = id;
-    this.title = title;
-    this.temp = temp;
-    this.humAir = humAir;
-    this.humSoil = humSoil;
+  constructor(module: any = {}) {
+    this.ID = module.ID;
+    this.title = module.title;
+    this.temp = module.temp;
+    this.humAir = module.humAir;
+    this.humSoil = module.humSoil;
+    this.stat = module.stat ? new Stat(module.stat) : new Stat();
   }
 }

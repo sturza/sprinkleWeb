@@ -27,7 +27,7 @@ export class ModuleService {
   }
 
   getModule(id: number){
-    return this.modules.find(tab => tab.id === id);
+    return this.modules.find(tab => tab.ID === id);
   }
 
   createModule(module: Module){

@@ -11,6 +11,7 @@
   width: auto;
   height: calc(100vh - 174px);
   margin-top: 0.5rem;
+  transform: translate(0, 0);
   text-align: left;
 }
 

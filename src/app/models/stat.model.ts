@@ -1,19 +1,18 @@
 export class Stat {
 
-  public id: number;
+  public ID: number;
+  public title: string;
+  public temp: number;
   public humAir: string;
   public humSoil: string;
   public imagePath: string;
-  public temp: number;
-  public title: string;
 
-
-  constructor(id: number, humAir: string, humSoil: string, imagePath: string, temp: number, title: string) {
-    this.id = id;
-    this.humAir = humAir;
-    this.humSoil = humSoil;
-    this.imagePath = imagePath;
-    this.temp = temp;
-    this.title = title;
+  constructor(stat: any = {}) {
+    this.ID = stat.ID;
+    this.title = stat.title;
+    this.temp = stat.temp;
+    this.humAir = stat.humAir;
+    this.humSoil = stat.humSoil;
+    this.imagePath = stat.imagePath;
   }
 }

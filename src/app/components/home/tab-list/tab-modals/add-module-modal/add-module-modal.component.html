@@ -1,17 +1,33 @@
 <div class="modal-content">
-  <h4>Add a tab</h4>
+  <h4>Add a module</h4>
   <div class="row">
-    <div class="input-field col s9">
-      <select class="icons" materialize="material_select" [materializeSelectOptions]="availableStats" [(ngModel)]="selectedStat">
-        <option value="" disabled selected>Choose your option</option>
-        <option *ngFor="let stat of availableStats; let statIndex = index" [value]="statIndex"
-                [attr.data-icon]="stat.imagePath" class="left circle"> {{ stat.title }} </option>
-      </select>
-      <label>Available modules</label>
-    </div>
-    <div class="col s3 right-align">
-      <button class="btn waves-effect" (click)="onCreate()">Create</button>
-    </div>
+    <form #moduleForm="ngForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="ID" type="text" class="validate" name="ID" ngModel required>
+          <label for="ID">ID</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="title" type="text" class="validate" name="title" ngModel required>
+          <label for="title">Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s9">
+          <select class="icons" materialize="material_select" [materializeSelectOptions]="availableStats" name="stat" [(ngModel)]="selectedStat">
+            <option value="" disabled selected>Choose your option</option>
+            <option *ngFor="let stat of availableStats; let statIndex = index" [value]="statIndex"
+                    [attr.data-icon]="stat.imagePath" class="left circle"> {{ stat.title }} </option>
+          </select>
+          <label>Available stats</label>
+        </div>
+        <div class="col s3 right-align">
+          <button class="btn waves-effect" (click)="onCreate()">Create</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
 

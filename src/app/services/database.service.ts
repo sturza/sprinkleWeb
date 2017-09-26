@@ -23,7 +23,7 @@ export class DatabaseService {
       )
       .catch(
         (error: Response) => {
-          return Observable.throw('Couldn\'t get tabs from server');
+          return Observable.throw('Couldn\'t get modules from server');
         }
       );
   }
@@ -50,7 +50,7 @@ export class DatabaseService {
       )
       .catch(
         (error: Response) => {
-          return Observable.throw('Couldn\'t get tabs from server');
+          return Observable.throw('Couldn\'t get stats from server');
         }
       );
   }
