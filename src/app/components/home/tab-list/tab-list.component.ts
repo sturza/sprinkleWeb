@@ -1,10 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
-import { ModuleService } from '../../../services/module.service';
-import { Subscription } from 'rxjs/Subscription';
 import { MaterializeAction } from 'angular2-materialize';
 
-import {Observable} from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
+
+import { ModuleService } from '../../../services/module.service';
 import { Module } from '../../../models/module.model';
+
+
 
 @Component({
   selector: 'app-tab-list',
@@ -25,7 +27,7 @@ export class TabListComponent implements OnInit, OnDestroy {
   }
 
   openModal() {
-    this.modalActions.emit({action:"modal",params:['open']});
+    this.modalActions.emit({action: 'modal', params: ['open']});
   }
 
   ngOnInit() {
@@ -35,11 +37,11 @@ export class TabListComponent implements OnInit, OnDestroy {
     this.tabs = this.moduleService.getModules();
     console.log(this.tabs);
   }
-  onCreateModal(){
+  onCreateModal() {
     this.displayedModal = 'create';
     console.log(this.displayedModal);
   }
-  onSelectModal(){
+  onSelectModal() {
     this.displayedModal = 'select';
   }
   ngOnDestroy() {

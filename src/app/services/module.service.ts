@@ -12,38 +12,51 @@ export class ModuleService {
 
   constructor(private databaseService: DatabaseService) {}
 
+  // Retrieving the modules
   retrieveModules() {
       this.databaseService.getModules().subscribe(
         (tabs) => {
           this.modules = tabs;
           this.modulesSubject.next(this.modules.slice());
         },
-        (error)=> console.log(error)
+        (error) => console.log(error)
       );
   }
 
+  // Getting the modules
   getModules() {
     return this.modules.slice();
   }
 
-  getModule(id: number){
-    return this.modules.find(tab => tab.ID === id);
+  getModule(uid: string) {
+    return this.modules.find(tab => tab.UID === uid);
   }
 
-  createModule(module: Module){
+  // Creating a module by sending a post request
+  createModule(module: Module) {
     this.databaseService.postModule(module).subscribe(
-      response => console.log(response)
+      response => {
+        console.log(response);
+        this.retrieveModules();
+      }
     );
   }
 
-  removeModule(id: number) {
-    this.databaseService.deleteModule(id).subscribe(
-      response => console.log(response)
+  // removing the module
+  removeModule(uid: string) {
+    this.databaseService.deleteModule(uid).subscribe(
+      response => {
+        console.log(response);
+        this.retrieveModules();
+      }
     );
   }
-  waterModule(id: number){
-    this.databaseService.waterModule(id).subscribe(
-      response => console.log(response)
+  waterModule(uid: string) {
+    this.databaseService.waterModule(uid).subscribe(
+      response => {
+        console.log(response);
+        this.retrieveModules();
+      }
     );
   }
 }

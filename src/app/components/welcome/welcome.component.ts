@@ -15,7 +15,6 @@ export class WelcomeComponent implements OnInit {
   }
 
   onStart() {
-    // console.log('Start was clicked');
     this.userEntered.emit();
   }
 

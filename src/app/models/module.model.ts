@@ -2,7 +2,7 @@ import { Stat } from './stat.model';
 
 export class Module {
 
-  public ID: number;
+  public UID: string;
   public title: string;
   public temp: number;
   public humAir: number;
@@ -10,7 +10,7 @@ export class Module {
   public stat: Stat;
 
   constructor(module: any = {}) {
-    this.ID = module.ID;
+    this.UID = module.UID;
     this.title = module.title;
     this.temp = module.temp;
     this.humAir = module.humAir;

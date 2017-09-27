@@ -1,5 +1,6 @@
 <div class="modal-content">
   <h4>Create a stat</h4>
+  <!--Completing the characteristics of a new stat-->
     <div class="row">
       <form #statForm="ngForm" (keypress)="formChanged()">
         <div class="row">
@@ -26,13 +27,15 @@
           <div class="file-field input-field col s12">
             <div class="btn">
               <span>Image</span>
-              <input type="file" ng2FileSelect [uploader]="imageUploader">
+              <input #imageFile type="file" ng2FileSelect [uploader]="imageUploader">
             </div>
             <div class="file-path-wrapper">
               <input #imageInput class="file-path validate" type="text" name="imagePath" ngModel>
             </div>
           </div>
         </div>
+
+        <!--Sending an error if the fields are not completed correct-->
         <div *ngIf="statForm.invalid && submitPressed" class="row no-margin-bottom">
           <div class="card-panel red">
             <h5 class="white-text"><i class="material-icons">error</i>ERROR</h5>

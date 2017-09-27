@@ -16,8 +16,9 @@ export class AppComponent implements OnInit {
 
   constructor(private moduleService: ModuleService, private statService: StatService)  {}
 
+  // Setting a timer to load modules every 15 seconds
   ngOnInit(): void {
-    let databaseObservable = Observable.timer(0, 30000);
+    const databaseObservable = Observable.timer(0, 15000);
     databaseObservable.subscribe(t => {
       this.moduleService.retrieveModules();
       this.statService.retrieveStats();

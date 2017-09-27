@@ -3,8 +3,8 @@ export class Stat {
   public ID: number;
   public title: string;
   public temp: number;
-  public humAir: string;
-  public humSoil: string;
+  public humAir: number;
+  public humSoil: number;
   public imagePath: string;
 
   constructor(stat: any = {}) {

@@ -1,36 +1,70 @@
 .tab-details-container{
-  width: 100%;
   height: calc(100vh - 128px);
 }
-.panel-container{
-  position: relative;
+
+.panel-wrapper {
   display: inline-block;
   margin: 0 10px 20px 10px;
 }
 
+.panel-container{
+  position: relative;
+}
+
 .temperature-text {
   position: absolute;
-  left: -15px;
-  top: 25%;
+  right: -20px;
   width: 100%;
 }
 .humidity-text{
   position: absolute;
   left: 0;
-  top: 15%;
   width: 100%;
 }
 
-img{
-  height: 300px;
-  width: 300px;
-}
+@media screen and (max-width: 993px) {
+  .temperature-text {
+    top: 30%
+  }
 
-@media screen and (max-width: 1120px) {
+  .humidity-text {
+    top: 30%
+  }
 
-  img{
-    height: 176px;
-    width: 226px;
+  img {
+    height: 180px;
+    width: 222px;
   }
 }
 
+@media screen and (max-width: 1200px) {
+
+  .temperature-text {
+    top: 34%
+  }
+
+  .humidity-text {
+    top: 34%
+  }
+
+  img {
+    height: 230px;
+    width: 272px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .temperature-text {
+    top: 36%
+  }
+
+  .humidity-text {
+    top: 36%
+  }
+
+  img {
+    height: 344px;
+    width: 294px;
+  }
+}

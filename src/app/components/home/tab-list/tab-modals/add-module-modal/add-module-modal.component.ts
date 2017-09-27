@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { StatService } from '../../../../../services/stat.service';
+
 import { Subscription } from 'rxjs/Subscription';
+
+import { StatService } from '../../../../../services/stat.service';
 import { ModuleService } from '../../../../../services/module.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-select-modal',
@@ -18,12 +21,14 @@ export class SelectModalComponent implements OnInit {
 
   availableStats = [];
 
+  submitPressed = false;
+
   @Output() onCreateModal: EventEmitter<any> = new EventEmitter();
 
-  constructor(private statService: StatService, private moduleService: ModuleService){ }
+  constructor(private statService: StatService, private moduleService: ModuleService) { }
 
   closeModal() {
-    this.modalActions.emit({action:"modal",params:['close']});
+    this.modalActions.emit({action: 'modal', params: ['close']});
   }
 
   ngOnInit() {
@@ -34,7 +39,7 @@ export class SelectModalComponent implements OnInit {
     console.log(this.availableStats);
 
   }
-  onAddTab() {
+  onAddTab(moduleForm: NgForm) {
     this.moduleService.createModule(this.availableStats[+this.selectedStat]);
     this.closeModal();
   }
@@ -45,5 +50,9 @@ export class SelectModalComponent implements OnInit {
 
   onCreate() {
     this.onCreateModal.emit();
+  }
+
+  onDeleteStat() {
+    this.statService.removeStat(+this.selectedStat);
   }
 }

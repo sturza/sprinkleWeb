@@ -1,99 +1,116 @@
 <div class="tab-details-container">
   <div class="center-wrapper">
     <div class="center-content">
+
+      <!--Showing the title for the current module-->
       <div class="row">
         <div class="col s12">
           <h3>{{ (tabPromise | async)?.title }}</h3>
         </div>
       </div>
+
+      <!--Verifying temperature for each module in order to show the right picture of the thermometer-->
       <div class="row">
         <div class="col s12">
-          <div class="panel-container">
-            <div *ngIf="(tabPromise | async)?.temp < 15">
-              <img class="circle responsive-img" src="/assets/temperatura_gol.png">
-            </div>
-
-            <div *ngIf="(tabPromise | async)?.temp > 15">
-              <div *ngIf="(tabPromise | async)?.temp < 25">
-                <img class="circle responsive-img" src="/assets/temp2.png">
+          <div class="panel-wrapper">
+            <div class="panel-container">
+              <div *ngIf="(tabPromise | async)?.temp < 10">
+                <img class="circle responsive-img" src="/assets/temperatura_gol.png">
               </div>
-            </div>
 
-            <div *ngIf="(tabPromise | async)?.temp > 25">
-              <div *ngIf="(tabPromise | async)?.temp < 35">
-                <img class="circle responsive-img" src="/assets/temperatura_jumatate.png">
+              <div *ngIf="(tabPromise | async)?.temp >= 10">
+                <div *ngIf="(tabPromise | async)?.temp <= 25">
+                  <img class="circle responsive-img" src="/assets/temp2.png">
+                </div>
               </div>
-            </div>
 
-            <div *ngIf="(tabPromise | async)?.temp > 35">
-              <img class="circle responsive-img" src="/assets/temperatura_plin.png">
-            </div>
+              <div *ngIf="(tabPromise | async)?.temp > 25">
+                <div *ngIf="(tabPromise | async)?.temp <= 35">
+                  <img class="circle responsive-img" src="/assets/temperatura_jumatate.png">
+                </div>
+              </div>
 
-            <h4 class="temperature-text">{{ (tabPromise | async)?.temp }}</h4>
-            <h5>Soil temperature</h5>
+              <div *ngIf="(tabPromise | async)?.temp > 35">
+                <img class="circle responsive-img" src="/assets/temperatura_plin.png">
+              </div>
+
+              <h4 class="temperature-text">{{ (tabPromise | async)?.temp }}° C</h4>
+            </div>
+            <h5>Temperature</h5>
           </div>
 
-          <div class="panel-container">
-            <div *ngIf="(tabPromise | async)?.humSoil < 15">
-              <img class="circle responsive-img" src="/assets/umiditate_0.png">
-            </div>
-
-            <div *ngIf="(tabPromise | async)?.humSoil > 30">
-              <div *ngIf="(tabPromise | async)?.humSoil < 50">
-                <img class="circle responsive-img" src="/umiditate_1_sfert.png">
+          <!--Verifying air humidity for each module in order to show by the water volume in the picture-->
+          <div class="panel-wrapper">
+            <div class="panel-container">
+              <div *ngIf="(tabPromise | async)?.humAir  < 15">
+                <img class="circle responsive-img" src="/assets/umiditate_0.png">
               </div>
-            </div>
 
-            <div *ngIf="(tabPromise | async)?.humSoil > 50">
-              <div *ngIf="(tabPromise | async)?.humSoil < 90">
-                <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+              <div *ngIf="(tabPromise | async)?.humAir  > 30">
+                <div *ngIf="(tabPromise | async)?.humAir < 50">
+                  <img class="circle responsive-img" src="/assets/umiditate_1_sfert.png">
+                </div>
               </div>
-            </div>
 
-            <div *ngIf="(tabPromise | async)?.humSoil > 90">
-              <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
-            </div>
+              <div *ngIf="(tabPromise | async)?.humAir  > 50">
+                <div *ngIf="(tabPromise | async)?.humAir  < 90">
+                  <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+                </div>
+              </div>
 
-            <h4 class="humidity-text">{{ (tabPromise | async)?.humSoil }}</h4>
+              <div *ngIf="(tabPromise | async)?.humAir  > 90">
+                <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
+              </div>
+
+              <h4 class="humidity-text">{{ (tabPromise | async)?.humAir }}%</h4>
+            </div>
+            <h5>Air humidity</h5>
+          </div>
+
+          <!--Verifying soil humidity for each module in order to show by the water volume in the picture-->
+          <div class="panel-wrapper">
+            <div class="panel-container">
+              <div *ngIf="(tabPromise | async)?.humSoil <= 15">
+                <img class="circle responsive-img" src="/assets/umiditate_0.png">
+              </div>
+
+              <div *ngIf="(tabPromise | async)?.humSoil > 15">
+                <div *ngIf="(tabPromise | async)?.humSoil < 50">
+                  <img class="circle responsive-img" src="/assets/umiditate_1_sfert.png">
+                </div>
+              </div>
+
+              <div *ngIf="(tabPromise | async)?.humSoil > 50">
+                <div *ngIf="(tabPromise | async)?.humSoil < 90">
+                  <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+                </div>
+              </div>
+
+              <div *ngIf="(tabPromise | async)?.humSoil > 90">
+                <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
+              </div>
+
+              <h4 class="humidity-text">{{ (tabPromise | async)?.humSoil }}%</h4>
+            </div>
             <h5>Soil humidity</h5>
           </div>
-
-          <div class="panel-container">
-            <div *ngIf="(tabPromise | async)?.humAir  < 15">
-              <img class="circle responsive-img" src="/assets/umiditate_0.png">
-            </div>
-
-            <div *ngIf="(tabPromise | async)?.humAir  > 30">
-              <div *ngIf="(tabPromise | async)?.humAir < 50">
-                <img class="circle responsive-img" src="/umiditate_1_sfert.png">
-              </div>
-            </div>
-
-            <div *ngIf="(tabPromise | async)?.humAir  > 50">
-              <div *ngIf="(tabPromise | async)?.humAir  < 90">
-                <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
-              </div>
-            </div>
-
-            <div *ngIf="(tabPromise | async)?.humAir  > 90">
-              <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
-            </div>
-            <div class="panel-container">
-              <h4 class="humidity-text">{{ (tabPromise | async)?.humAir }}</h4>
-              <h5>Air humidity</h5>
-            </div>
-          </div>
-
         </div>
       </div>
+
+      <!--This instruction removes a module-->
       <div class="row no-margin-bottom">
         <div class="col s12">
           <div class="row">
             <div class="col s6 left-align">
               <button class="btn waves-effect red darken-2" (click)="onRemoveTab()">Remove</button>
             </div>
+
+            <!--Giving the signal to sprinkle the plant-->
             <div class="col s6 right-align">
-              <button class="btn waves-effect blue darken-2" (click)="onWaterTab()">Water it!</button>
+              <button class="btn waves-effect blue darken-2"
+                      onclick="Materialize.toast('The plant will be sprinkled in the next 30 seconds :)', 4000)"
+                      (click)="onWaterTab()">Water it!
+              </button>
             </div>
           </div>
         </div>

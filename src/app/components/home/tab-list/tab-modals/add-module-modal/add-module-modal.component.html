@@ -2,36 +2,53 @@
   <h4>Add a module</h4>
   <div class="row">
     <form #moduleForm="ngForm">
+
+      <!--UID form field-->
       <div class="row">
         <div class="input-field col s12">
-          <input id="ID" type="text" class="validate" name="ID" ngModel required>
-          <label for="ID">ID</label>
+          <input id="UID" type="text" class="validate" name="UID" ngModel required>
+          <label for="UID">UID</label>
         </div>
       </div>
+
+      <!--Title form field-->
       <div class="row">
         <div class="input-field col s12">
           <input id="title" type="text" class="validate" name="title" ngModel required>
           <label for="title">Title</label>
         </div>
       </div>
-      <div class="row">
+
+      <!--The list of available stats -->
+      <div [ngClass]="{'row': true, 'no-margin-bottom': moduleForm.valid && submitPressed}">
         <div class="input-field col s9">
           <select class="icons" materialize="material_select" [materializeSelectOptions]="availableStats" name="stat" [(ngModel)]="selectedStat">
-            <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let stat of availableStats; let statIndex = index" [value]="statIndex"
-                    [attr.data-icon]="stat.imagePath" class="left circle"> {{ stat.title }} </option>
+            <option value="" selected>Choose or create stat</option>
+            <option *ngFor="let stat of availableStats" [value]="stat.ID"
+                    [attr.data-icon]="stat.imagePath" class="left circle"> {{ stat.title }}
+            </option>
           </select>
           <label>Available stats</label>
         </div>
+
         <div class="col s3 right-align">
-          <button class="btn waves-effect" (click)="onCreate()">Create</button>
+          <button *ngIf="selectedStat === ''" class="btn waves-effect" (click)="onCreate()">Create</button>
+          <button *ngIf="selectedStat !== ''" class="btn waves-effect red" (click)="onDeleteStat()">Remove</button>
         </div>
       </div>
+
+      <div *ngIf="moduleForm.invalid && submitPressed" class="row no-margin-bottom">
+        <div class="card-panel red">
+          <h5 class="white-text"><i class="material-icons">error</i>ERROR</h5>
+          <p class="white-text">The form is invalid</p>
+        </div>
+      </div>
+
     </form>
   </div>
 </div>
 
 <div class="modal-footer">
   <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="onCancel()">Cancel</a>
-  <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="onAddTab()">Add</a>
+  <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="onAddTab(moduleForm)">Add</a>
 </div>

@@ -18,7 +18,7 @@ export class StatService {
         this.stats = tabs;
         this.statsSubject.next(this.stats.slice());
       },
-      (error)=> console.log(error)
+      (error) => console.log(error)
     );
   }
 
@@ -26,19 +26,25 @@ export class StatService {
     return this.stats.slice();
   }
 
-  getStat(id: number){
+  getStat(id: number) {
     return this.stats.find(stat => stat.ID === id);
   }
 
-  createStat(stat: any){
+  createStat(stat: any) {
     this.databaseService.postStat(stat).subscribe(
-      response => console.log(response)
+      response => {
+        console.log(response);
+        this.retrieveStats();
+      }
     );
   }
 
   removeStat(id: number) {
     this.databaseService.deleteStat(id).subscribe(
-      response => console.log(response)
+      response => {
+        console.log(response);
+        this.retrieveStats();
+      }
     );
   }
 
