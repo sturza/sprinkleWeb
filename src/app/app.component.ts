@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class AppComponent implements OnInit {
 
   // set this to false for production deployment
-  userEntered = true;
+  userEntered = false;
 
   constructor(private moduleService: ModuleService, private statService: StatService)  {}
 

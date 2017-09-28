@@ -15,7 +15,7 @@
           <div class="panel-wrapper">
             <div class="panel-container">
               <div *ngIf="(tabPromise | async)?.temp < 10">
-                <img class="circle responsive-img" src="/assets/temperatura_gol.png">
+                <img class="circle responsive-img" src="/assets/temp1.png">
               </div>
 
               <div *ngIf="(tabPromise | async)?.temp >= 10">
@@ -26,12 +26,12 @@
 
               <div *ngIf="(tabPromise | async)?.temp > 25">
                 <div *ngIf="(tabPromise | async)?.temp <= 35">
-                  <img class="circle responsive-img" src="/assets/temperatura_jumatate.png">
+                  <img class="circle responsive-img" src="/assets/temp3.png">
                 </div>
               </div>
 
               <div *ngIf="(tabPromise | async)?.temp > 35">
-                <img class="circle responsive-img" src="/assets/temperatura_plin.png">
+                <img class="circle responsive-img" src="/assets/temp4.png">
               </div>
 
               <h4 class="temperature-text">{{ (tabPromise | async)?.temp }}° C</h4>
@@ -43,23 +43,29 @@
           <div class="panel-wrapper">
             <div class="panel-container">
               <div *ngIf="(tabPromise | async)?.humAir  < 15">
-                <img class="circle responsive-img" src="/assets/umiditate_0.png">
+                <img class="circle responsive-img" src="/assets/hum1.png">
               </div>
 
-              <div *ngIf="(tabPromise | async)?.humAir  > 30">
+              <div *ngIf="(tabPromise | async)?.humAir  >= 15">
+                <div *ngIf="(tabPromise | async)?.humAir < 30">
+                  <img class="circle responsive-img" src="/assets/hum2.png">
+                </div>
+              </div>
+
+              <div *ngIf="(tabPromise | async)?.humAir  >= 30">
                 <div *ngIf="(tabPromise | async)?.humAir < 50">
-                  <img class="circle responsive-img" src="/assets/umiditate_1_sfert.png">
+                  <img class="circle responsive-img" src="/assets/hum3.png">
                 </div>
               </div>
 
-              <div *ngIf="(tabPromise | async)?.humAir  > 50">
+              <div *ngIf="(tabPromise | async)?.humAir  >= 50">
                 <div *ngIf="(tabPromise | async)?.humAir  < 90">
-                  <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+                  <img class="circle responsive-img" src="/assets/hum4.png">
                 </div>
               </div>
 
-              <div *ngIf="(tabPromise | async)?.humAir  > 90">
-                <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
+              <div *ngIf="(tabPromise | async)?.humAir  >= 90">
+                <img class="circle responsive-img" src="/assets/hum5.png">
               </div>
 
               <h4 class="humidity-text">{{ (tabPromise | async)?.humAir }}%</h4>
@@ -71,23 +77,29 @@
           <div class="panel-wrapper">
             <div class="panel-container">
               <div *ngIf="(tabPromise | async)?.humSoil <= 15">
-                <img class="circle responsive-img" src="/assets/umiditate_0.png">
+                <img class="circle responsive-img" src="/assets/hum1.png">
               </div>
 
               <div *ngIf="(tabPromise | async)?.humSoil > 15">
+                <div *ngIf="(tabPromise | async)?.humSoil <= 30">
+                  <img class="circle responsive-img" src="/assets/hum2.png">
+                </div>
+              </div>
+
+              <div *ngIf="(tabPromise | async)?.humSoil > 30">
                 <div *ngIf="(tabPromise | async)?.humSoil < 50">
-                  <img class="circle responsive-img" src="/assets/umiditate_1_sfert.png">
+                  <img class="circle responsive-img" src="/assets/hum3.png">
                 </div>
               </div>
 
-              <div *ngIf="(tabPromise | async)?.humSoil > 50">
+              <div *ngIf="(tabPromise | async)?.humSoil >= 50">
                 <div *ngIf="(tabPromise | async)?.humSoil < 90">
-                  <img class="circle responsive-img" src="/assets/umiditate_jumatate__2_.png">
+                  <img class="circle responsive-img" src="/assets/hum4.png">
                 </div>
               </div>
 
-              <div *ngIf="(tabPromise | async)?.humSoil > 90">
-                <img class="circle responsive-img" src="/assets/umiditate_plin__2_.png">
+              <div *ngIf="(tabPromise | async)?.humSoil >= 90">
+                <img class="circle responsive-img" src="/assets/hum5.png">
               </div>
 
               <h4 class="humidity-text">{{ (tabPromise | async)?.humSoil }}%</h4>
