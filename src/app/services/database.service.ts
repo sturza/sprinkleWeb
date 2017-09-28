@@ -1,76 +1,62 @@
 import { Injectable } from '@angular/core';
-import { Http, Response} from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
+
+import { Response } from 'app/models/response.model';
+import { Module } from 'app/models/module.model';
+import { Stat } from 'app/models/stat.model';
+
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class DatabaseService {
 
   public url = 'https://sprinkle-sturza.c9users.io';
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   // Sending a request to create a module
-  postModule(tab: any) {
-    return this.http.post(this.url + '/create-module/', tab)
+  postModule(module: any) {
+    return this.http.post(this.url + '/add-module/', module)
   }
 
   getModules() {
     // Taking the modules from the server
-    return this.http.get(this.url + '/get-modules/')
-      .map(
-        (response: Response) => {
-          return response.json();
-        }
-      )
-      .catch(
-        (error: Response) => {
-          return Observable.throw('Couldn\'t get modules from server');
-        }
-      );
+    return this.http.get(this.url + '/get-modules/').map(this.mapModules);
   }
+
+  mapModules = res => {
+    return res.map(module => new Module(module))
+  };
+
   // Deleting a module from the list
-  deleteModule(tabId: string) {
-    console.log(tabId);
-    return this.http.delete(this.url + '/delete-module/' + tabId);
+  deleteModule(moduleUID: string) {
+    console.log(moduleUID);
+    return this.http.delete(this.url + '/delete-module/' + moduleUID);
   }
 
   // Requesting to activate the pomp and sprinle the plant
-  waterModule(tabId: any) {
-    return this.http.options(this.url + '/activate-pomp/' + tabId);
+  waterModule(moduleUID: string) {
+    return this.http.options(this.url + '/activate-pomp/' + moduleUID);
 
   }
 
   // Making a post request to add a stat
-  postStat(tab: any) {
-    return this.http.post(this.url + '/add-stat/', tab)
+  postStat(stat: any) {
+    return this.http.post(this.url + '/create-stat/', stat)
   }
 
   // Making a get request to retrieve all stats
   getStats() {
-    return this.http.get(this.url + '/stats/')
-      .map(
-        (response: Response) => {
-          return response.json();
-        }
-      )
-      .catch(
-        (error: Response) => {
-          return Observable.throw('Couldn\'t get stats from server');
-        }
-      );
+    return this.http.get(this.url + '/stats/').map(this.mapStats);
   }
+
+  mapStats = res => {
+    return res.map(stat => new Stat(stat))
+  };
 
   // Making a http request to delete a stat
-  deleteStat(tabId: number) {
-    console.log(tabId);
-    return this.http.delete(this.url + '/delete-stat/' + tabId);
+  deleteStat(statID: number) {
+    console.log(statID);
+    return this.http.delete(this.url + '/delete-stat/' + statID);
   }
-
-  // Sending a post request to upload image for the module
-  uploadFile(file: any) {
-    console.log(file);
-    return this.http.post(this.url + '/upload-file/', file);
-  }
-
 }
