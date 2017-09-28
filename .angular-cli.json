@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/materialize-css/dist/css/materialize.min.css",
+        "assets/styles/materialize.scss",
         "styles.css"
       ],
       "scripts": [

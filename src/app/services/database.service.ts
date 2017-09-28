@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Response } from 'app/models/response.model';
 import { Module } from 'app/models/module.model';
 import { Stat } from 'app/models/stat.model';
 
@@ -36,7 +35,7 @@ export class DatabaseService {
 
   // Requesting to activate the pomp and sprinle the plant
   waterModule(moduleUID: string) {
-    return this.http.options(this.url + '/activate-pomp/' + moduleUID);
+    return this.http.options(this.url + '/activate-pump/' + moduleUID);
 
   }
 

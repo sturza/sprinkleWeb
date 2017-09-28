@@ -16,7 +16,7 @@
   right: -20px;
   width: 100%;
 }
-.humidity-text{
+.humidity-text {
   position: absolute;
   left: 0;
   width: 100%;
@@ -32,7 +32,7 @@
   }
 
   img {
-    height: 180px;
+    height: 182px;
     width: 222px;
   }
 }
@@ -48,23 +48,23 @@
   }
 
   img {
-    height: 230px;
-    width: 272px;
+    height: 200px;
+    width: 248px;
   }
 }
 
 @media screen and (min-width: 1200px) {
 
   .temperature-text {
-    top: 36%
+    top: 34%
   }
 
   .humidity-text {
-    top: 36%
+    top: 34%
   }
 
   img {
-    height: 344px;
+    height: 239px;
     width: 294px;
   }
 }
