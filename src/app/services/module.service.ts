@@ -15,8 +15,8 @@ export class ModuleService {
   // Retrieving the modules
   retrieveModules() {
       this.databaseService.getModules().subscribe(
-        (tabs) => {
-          this.modules = tabs;
+        (modules: Module[]) => {
+          this.modules = modules;
           this.modulesSubject.next(this.modules.slice());
         },
         (error) => console.log(error)
@@ -33,7 +33,7 @@ export class ModuleService {
   }
 
   // Creating a module by sending a post request
-  createModule(module: Module) {
+  createModule(module: any) {
     this.databaseService.postModule(module).subscribe(
       response => {
         console.log(response);

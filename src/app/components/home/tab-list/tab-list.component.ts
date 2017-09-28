@@ -16,7 +16,7 @@ import { Module } from '../../../models/module.model';
 
 export class TabListComponent implements OnInit, OnDestroy {
 
-  tabs: Module[] = [];
+  modules: Module[] = [];
 
   subscription: Subscription;
   modalActions = new EventEmitter<string|MaterializeAction>();
@@ -32,21 +32,22 @@ export class TabListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.moduleService.modulesSubject.subscribe(
-      (tabs) => this.tabs = tabs
+      (modules) => this.modules = modules
     );
-    this.tabs = this.moduleService.getModules();
-    console.log(this.tabs);
+    this.modules = this.moduleService.getModules();
+    console.log(this.modules);
   }
+
   onCreateModal() {
     this.displayedModal = 'create';
     console.log(this.displayedModal);
   }
+
   onSelectModal() {
     this.displayedModal = 'select';
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-
 }

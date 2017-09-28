@@ -15,6 +15,6 @@ export class Module {
     this.temp = module.temp;
     this.humAir = module.humAir;
     this.humSoil = module.humSoil;
-    this.stat = module.stat ? new Stat(module.stat) : new Stat();
+    this.stat = module.stat ? new Stat(module.stat) : null;
   }
 }

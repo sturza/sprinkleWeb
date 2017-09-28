@@ -1,3 +1,5 @@
+import { environment } from 'environments/environment';
+
 export class Stat {
 
   public ID: number;
@@ -13,6 +15,6 @@ export class Stat {
     this.temp = stat.temp;
     this.humAir = stat.humAir;
     this.humSoil = stat.humSoil;
-    this.imagePath = stat.imagePath;
+    this.imagePath = environment.baseURL + stat.imagePath;
   }
 }

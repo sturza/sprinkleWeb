@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Module } from '../../../../models/module.model';
+import { Module } from 'app/models/module.model';
 
 @Component({
   selector: 'app-tab-item',
@@ -14,6 +14,7 @@ export class TabItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.module.stat.imagePath);
   }
 
 }

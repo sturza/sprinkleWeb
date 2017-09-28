@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { HomeComponent } from './components/home/home.component';
-import { HttpModule } from '@angular/http';
+
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TabItemComponent } from './components/home/tab-list/tab-item/tab-item.component';
@@ -35,13 +36,13 @@ declarations: [
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     MaterializeModule,
     FileUploadModule,
     AppRoutingModule
   ],
-  providers: [ModuleService,StatService,DatabaseService],
+  providers: [ModuleService, StatService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

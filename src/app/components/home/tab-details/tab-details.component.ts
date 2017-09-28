@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
-import { ModuleService } from '../../../services/module.service';
-import { Module } from '../../../models/module.model'
+import { ModuleService } from 'app/services/module.service';
+import { Module } from 'app/models/module.model'
 
 @Component({
   selector: 'app-tab-details',

@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { StatService } from '../../../../../services/stat.service';
-import { ModuleService } from '../../../../../services/module.service';
-import { NgForm } from '@angular/forms';
+import { ModuleService } from 'app/services/module.service';
+import { StatService } from 'app/services/stat.service';
+
+import { Stat } from 'app/models/stat.model';
 
 @Component({
   selector: 'app-select-modal',
@@ -19,7 +21,7 @@ export class SelectModalComponent implements OnInit {
 
   subscription: Subscription;
 
-  availableStats = [];
+  availableStats: Stat[] = [];
 
   submitPressed = false;
 
@@ -36,15 +38,18 @@ export class SelectModalComponent implements OnInit {
       (stats) => this.availableStats = stats
     );
     this.availableStats = this.statService.getStats();
-    console.log(this.availableStats);
 
+    console.log(this.availableStats);
   }
-  onAddTab(moduleForm: NgForm) {
-    this.moduleService.createModule(this.availableStats[+this.selectedStat]);
+  onAddModule(moduleForm: NgForm) {
+    console.log(moduleForm.value);
+    this.moduleService.createModule(moduleForm.value);
+    moduleForm.reset();
     this.closeModal();
   }
 
-  onCancel() {
+  onCancel(moduleForm: NgForm) {
+    moduleForm.reset();
     this.closeModal();
   }
 

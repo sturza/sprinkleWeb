@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
+  baseURL: 'https://sprinkle-sturza.c9users.io',
+  refreshInterval: 30000,
   production: false
 };

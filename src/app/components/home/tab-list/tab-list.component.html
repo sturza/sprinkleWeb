@@ -15,7 +15,7 @@
   </form>
   <ul class="side-nav fixed">
     <li><a class="subheader">Modules</a></li>
-    <app-tab-item *ngFor="let tab of tabs" [module]="tab"></app-tab-item>
+    <app-tab-item *ngFor="let module of modules" [module]="module"></app-tab-item>
     <div class="add-button">
       <a style="cursor: pointer;" class="modal-trigger" (click)="openModal()"><i class="material-icons add-circle" style="margin-top: 12px;" >add_circle</i></a>
     </div>

@@ -14,8 +14,9 @@ export class StatService {
 
   retrieveStats() {
     this.databaseService.getStats().subscribe(
-      (tabs) => {
-        this.stats = tabs;
+      (stats: Stat[]) => {
+        this.stats = stats;
+        console.log(this.stats);
         this.statsSubject.next(this.stats.slice());
       },
       (error) => console.log(error)
@@ -24,10 +25,6 @@ export class StatService {
 
   getStats() {
     return this.stats.slice();
-  }
-
-  getStat(id: number) {
-    return this.stats.find(stat => stat.ID === id);
   }
 
   createStat(stat: any) {
