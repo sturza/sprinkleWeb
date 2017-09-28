@@ -45,11 +45,13 @@ export class SelectModalComponent implements OnInit {
     console.log(moduleForm.value);
     this.moduleService.createModule(moduleForm.value);
     moduleForm.reset();
+    this.selectedStat = '';
     this.closeModal();
   }
 
   onCancel(moduleForm: NgForm) {
     moduleForm.reset();
+    this.selectedStat = '';
     this.closeModal();
   }
 
@@ -59,5 +61,6 @@ export class SelectModalComponent implements OnInit {
 
   onDeleteStat() {
     this.statService.removeStat(+this.selectedStat);
+    this.selectedStat = '';
   }
 }

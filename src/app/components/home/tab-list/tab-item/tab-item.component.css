@@ -1,3 +1,16 @@
+a {
+  padding: 0 10px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
 a.active {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tab-image {
+  height: 48px;
+  line-height: 48px;
+  margin-right: 10px;
 }

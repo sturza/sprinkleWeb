@@ -1,6 +1,6 @@
 <!--Showing the module in the module list-->
 <li>
-  <a class="waves-effect" [routerLink]="['/module', module.UID]"  routerLinkActive="active">
-    <img class="activator" [src]="module.stat ? module.stat.imagePath : ''" style="height: 48px;">{{ module.title }}
+  <a class="tab-item waves-effect" [routerLink]="['/module', module.UID]"  routerLinkActive="active">
+    <img class="tab-image activator" [src]="module.stat ? module.stat.imagePath : ''">{{ module.title }}
   </a>
 </li>

@@ -16,7 +16,7 @@ export class TabDetailsComponent implements OnInit, OnDestroy {
 
   private uid: string;
 
-  tabPromise: Observable<Module> ;
+  modulePromise: Observable<Module> ;
   subscription: Subscription;
 
   constructor(private route: ActivatedRoute, private router: Router, private moduleService: ModuleService) {}
@@ -27,11 +27,11 @@ export class TabDetailsComponent implements OnInit, OnDestroy {
       (params) => {
         this.uid = params['uid'];
         // Updating the details with real time data
-        this.tabPromise = new Observable(observer => {
+        this.modulePromise = new Observable(observer => {
           this.subscription = this.moduleService.modulesSubject.subscribe(
-            (tabs) => {
-              const tab = this.moduleService.getModule(this.uid);
-              observer.next(tab);
+            (modules) => {
+              const module = this.moduleService.getModule(this.uid);
+              observer.next(module);
             }
           );
           observer.next(this.moduleService.getModule(this.uid));
@@ -44,6 +44,7 @@ export class TabDetailsComponent implements OnInit, OnDestroy {
   }
   onRemoveTab() {
     this.moduleService.removeModule(this.uid);
+    this.router.navigate(['/']);
   }
   onWaterTab() {
     this.moduleService.waterModule(this.uid);
