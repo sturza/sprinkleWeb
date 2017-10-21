@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col s12">
+    <div style="display: block">
+      <canvas baseChart width="200" height="100"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [chartType]="lineChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+</div>

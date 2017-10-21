@@ -16,8 +16,10 @@ export class TabDetailsComponent implements OnInit, OnDestroy {
 
   private uid: string;
 
-  modulePromise: Observable<Module> ;
+  modulePromise: Observable<Module>;
   subscription: Subscription;
+
+  displayControls = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private moduleService: ModuleService) {}
 
@@ -39,14 +41,21 @@ export class TabDetailsComponent implements OnInit, OnDestroy {
       }
     );
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-  onRemoveTab() {
+
+  onRemoveModule() {
     this.moduleService.removeModule(this.uid);
     this.router.navigate(['/']);
   }
-  onWaterTab() {
+
+  onWaterModule() {
     this.moduleService.waterModule(this.uid);
+  }
+
+  onSwitchComponent() {
+    this.displayControls = !this.displayControls;
   }
 }

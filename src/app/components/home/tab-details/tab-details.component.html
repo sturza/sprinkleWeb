@@ -1,5 +1,9 @@
 <div class="tab-details-container">
   <div class="center-wrapper">
+
+    <button class="btn waves-effect waves-green switch-button"
+            (click)="onSwitchComponent()">{{ displayControls ? 'Graph' : 'Controls' }}</button>
+
     <div class="center-content">
 
       <!--Showing the title for the current module-->
@@ -9,130 +13,21 @@
         </div>
       </div>
 
-      <!--Verifying temperature for each module in order to show the right picture of the thermometer-->
-      <div class="row">
-        <div class="col s12">
-          <div class="panel-wrapper">
-            <div class="panel-container">
-              <div *ngIf="(modulePromise | async)?.temp < 10">
-                <img class="circle responsive-img" src="/assets/images/temp1.png">
-              </div>
+      <div [ngSwitch]="displayControls">
 
-              <div *ngIf="(modulePromise | async)?.temp >= 10">
-                <div *ngIf="(modulePromise | async)?.temp <= 15">
-                  <img class="circle responsive-img" src="/assets/images/temp2.png">
-                </div>
-              </div>
+        <ng-container *ngSwitchCase="true">
+          <app-controls [modulePromise]="modulePromise"
+                        (removeModule)="onRemoveModule()"
+                        (waterModule)="onWaterModule()">
+          </app-controls>
+        </ng-container>
 
-              <div *ngIf="(modulePromise | async)?.temp > 15">
-                <div *ngIf="(modulePromise | async)?.temp <= 25">
-                  <img class="circle responsive-img" src="/assets/images/temp3.png">
-                </div>
-              </div>
+        <ng-container *ngSwitchCase="false">
+          <app-graph></app-graph>
+        </ng-container>
 
-              <div *ngIf="(modulePromise | async)?.temp > 25">
-                <div *ngIf="(modulePromise | async)?.temp <= 35">
-                  <img class="circle responsive-img" src="/assets/images/temp4.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.temp > 35">
-                <img class="circle responsive-img" src="/assets/images/temp5.png">
-              </div>
-
-              <h4 class="temperature-text">{{ (modulePromise | async)?.temp }}° C</h4>
-            </div>
-            <h5>Temperature</h5>
-          </div>
-
-          <!--Verifying air humidity for each module in order to show by the water volume in the picture-->
-          <div class="panel-wrapper">
-            <div class="panel-container">
-              <div *ngIf="(modulePromise | async)?.humAir  < 15">
-                <img class="circle responsive-img" src="/assets/images/hum1.png">
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humAir  >= 15">
-                <div *ngIf="(modulePromise | async)?.humAir < 30">
-                  <img class="circle responsive-img" src="/assets/images/hum2.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humAir  >= 30">
-                <div *ngIf="(modulePromise | async)?.humAir < 50">
-                  <img class="circle responsive-img" src="/assets/images/hum3.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humAir  >= 50">
-                <div *ngIf="(modulePromise | async)?.humAir  < 90">
-                  <img class="circle responsive-img" src="/assets/images/hum4.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humAir  >= 90">
-                <img class="circle responsive-img" src="/assets/images/hum5.png">
-              </div>
-
-              <h4 class="humidity-text">{{ (modulePromise | async)?.humAir }}%</h4>
-            </div>
-            <h5>Air humidity</h5>
-          </div>
-
-          <!--Verifying soil humidity for each module in order to show by the water volume in the picture-->
-          <div class="panel-wrapper">
-            <div class="panel-container">
-              <div *ngIf="(modulePromise | async)?.humSoil <= 15">
-                <img class="circle responsive-img" src="/assets/images/hum1.png">
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humSoil > 15">
-                <div *ngIf="(modulePromise | async)?.humSoil <= 30">
-                  <img class="circle responsive-img" src="/assets/images/hum2.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humSoil > 30">
-                <div *ngIf="(modulePromise | async)?.humSoil < 50">
-                  <img class="circle responsive-img" src="/assets/images/hum3.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humSoil >= 50">
-                <div *ngIf="(modulePromise | async)?.humSoil < 90">
-                  <img class="circle responsive-img" src="/assets/images/hum4.png">
-                </div>
-              </div>
-
-              <div *ngIf="(modulePromise | async)?.humSoil >= 90">
-                <img class="circle responsive-img" src="/assets/images/hum5.png">
-              </div>
-
-              <h4 class="humidity-text">{{ (modulePromise | async)?.humSoil }}%</h4>
-            </div>
-            <h5>Soil humidity</h5>
-          </div>
-        </div>
       </div>
 
-      <!--This instruction removes a module-->
-      <div class="row no-margin-bottom">
-        <div class="col s12">
-          <div class="row">
-            <div class="col s6 left-align">
-              <button class="btn waves-effect red darken-2" (click)="onRemoveTab()">Remove</button>
-            </div>
-
-            <!--Giving the signal to sprinkle the plant-->
-            <div class="col s6 right-align">
-              <button class="btn waves-effect waves-green"
-                      onclick="Materialize.toast('The plant will be sprinkled in the next 30 seconds :)', 4000)"
-                      (click)="onWaterTab()">Water it!
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

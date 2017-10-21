@@ -13,35 +13,30 @@ export class DatabaseService {
 
   constructor(private http: HttpClient) {}
 
-  // Sending a request to create a module
-  postModule(module: any) {
-    return this.http.post(this.url + '/add-module/', module)
-  }
-
   getModules() {
     // Taking the modules from the server
-    return this.http.get(this.url + '/get-modules/').map(this.mapModules);
+    return this.http.get(this.url + '/modules/').map(this.mapModules);
   }
 
   mapModules = res => {
     return res.map(module => new Module(module))
   };
 
-  // Deleting a module from the list
-  deleteModule(moduleUID: string) {
+  // Sending a request to create a module
+  addModule(module: any) {
+    return this.http.post(this.url + '/add-module/', module)
+  }
+
+  // Removing a module from the list
+  removeModule(moduleUID: string) {
     console.log(moduleUID);
-    return this.http.delete(this.url + '/delete-module/' + moduleUID);
+    return this.http.delete(this.url + '/remove-module/' + moduleUID);
   }
 
   // Requesting to activate the pomp and sprinle the plant
   waterModule(moduleUID: string) {
     return this.http.options(this.url + '/activate-pump/' + moduleUID);
 
-  }
-
-  // Making a post request to add a stat
-  postStat(stat: any) {
-    return this.http.post(this.url + '/create-stat/', stat)
   }
 
   // Making a get request to retrieve all stats
@@ -52,6 +47,11 @@ export class DatabaseService {
   mapStats = res => {
     return res.map(stat => new Stat(stat))
   };
+
+  // Making a post request to add a stat
+  createStat(stat: any) {
+    return this.http.post(this.url + '/create-stat/', stat)
+  }
 
   // Making a http request to delete a stat
   deleteStat(statID: number) {

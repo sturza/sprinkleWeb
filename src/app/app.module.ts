@@ -18,8 +18,11 @@ import { TabDetailsComponent } from './components/home/tab-details/tab-details.c
 import { TabStartComponent } from './components/home/tab-start/tab-start.component';
 import { SelectModalComponent } from './components/home/tab-list/tab-modals/add-module-modal/add-module-modal.component';
 import { CreateModalComponent } from './components/home/tab-list/tab-modals/create-stat-modal/create-stat-modal.component';
+import { GraphComponent } from './components/home/tab-details/graph/graph.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { StatService } from './services/stat.service';
+import { ChartsModule } from 'ng2-charts';
+import { ControlsComponent } from './components/home/tab-details/controls/controls.component';
 
 @NgModule({
 declarations: [
@@ -32,7 +35,9 @@ declarations: [
     TabDetailsComponent,
     TabStartComponent,
     SelectModalComponent,
-    CreateModalComponent
+    CreateModalComponent,
+    GraphComponent,
+    ControlsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,7 @@ declarations: [
     FormsModule,
     MaterializeModule,
     FileUploadModule,
+    ChartsModule,
     AppRoutingModule
   ],
   providers: [ModuleService, StatService, DatabaseService],

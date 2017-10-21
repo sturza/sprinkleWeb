@@ -28,7 +28,7 @@ export class StatService {
   }
 
   createStat(stat: any) {
-    this.databaseService.postStat(stat).subscribe(
+    this.databaseService.createStat(stat).subscribe(
       response => {
         console.log(response);
         this.retrieveStats();

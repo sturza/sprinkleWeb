@@ -17,7 +17,7 @@ import { environment } from 'environments/environment';
 export class AppComponent implements OnInit {
 
   // set this to false for production deployment
-  userEntered = false;
+  userEntered = true;
 
   constructor(private moduleService: ModuleService, private statService: StatService)  {}
 

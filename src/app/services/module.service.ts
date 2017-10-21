@@ -34,7 +34,7 @@ export class ModuleService {
 
   // Creating a module by sending a post request
   createModule(module: any) {
-    this.databaseService.postModule(module).subscribe(
+    this.databaseService.addModule(module).subscribe(
       response => {
         console.log(response);
         this.retrieveModules();
@@ -44,7 +44,7 @@ export class ModuleService {
 
   // removing the module
   removeModule(uid: string) {
-    this.databaseService.deleteModule(uid).subscribe(
+    this.databaseService.removeModule(uid).subscribe(
       response => {
         console.log(response);
         this.retrieveModules();
