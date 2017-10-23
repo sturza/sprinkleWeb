@@ -13,11 +13,10 @@ import { environment } from 'environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent implements OnInit {
 
-  // set this to false for production deployment
-  userEntered = true;
+  // TODO: Set this to false for production deployment
+  userEntered = false;
 
   constructor(private moduleService: ModuleService, private statService: StatService)  {}
 

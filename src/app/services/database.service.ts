@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Module } from 'app/models/module.model';
 import { Stat } from 'app/models/stat.model';
+import { Graph } from 'app/models/graph.model';
 
 import 'rxjs/add/operator/map'
 
@@ -58,4 +59,16 @@ export class DatabaseService {
     console.log(statID);
     return this.http.delete(this.url + '/delete-stat/' + statID);
   }
+
+  // Making a http request to get a graph
+  getGraph(moduleUID: string){
+    return this.http.get(this.url+ '/graph/' + moduleUID).map(this.mapGraph);
+  }
+
+  mapGraph = res => {
+    return res.map(graph => new Graph(graph))
+  };
+
+
+
 }
