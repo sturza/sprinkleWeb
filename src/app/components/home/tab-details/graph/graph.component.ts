@@ -16,10 +16,11 @@ export class GraphComponent implements OnInit {
 
   // lineChart
   public lineChartData: Array<any> = [
-    {data: [23, 24, 27, 26, 24, 25, 26], label: 'Temperature'},
-    {data: [67, 64, 65, 68, 67, 66, 67], label: 'Air humidity'},
-    {data: [78, 56, 32, 83, 53, 28, 86], label: 'Soil humidity'}
+    {data: [0,0,0,0,0,0,0,0,0,0,0,0], label: 'Temperature'},
+    {data: [0,0,0,0,0,0,0,0,0,0,0,0], label: 'Air humidity'},
+    {data: [0,0,0,0,0,0,0,0,0,0,0,0], label: 'Soil humidity'}
   ];
+
   //public lineChartLabels: Array<any> = ['07/10/2017', '08/10/2017'];
   public lineChartLabels: Array<any> = [];
 
