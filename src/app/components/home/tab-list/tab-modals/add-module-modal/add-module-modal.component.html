@@ -22,7 +22,7 @@
       <!--The list of available stats -->
       <div [ngClass]="{'row': true, 'no-margin-bottom': moduleForm.valid && submitPressed}">
         <div class="input-field col s9">
-          <select class="icons" materialize="material_select" [materializeSelectOptions]="availableStats" name="statID" [(ngModel)]="selectedStat">
+          <select class="icons" materialize="material_select" [materializeSelectOptions]="availableStats" name="statID" [(ngModel)]="selectedStat" required>
             <option value="" selected>Choose or create stat</option>
             <option *ngFor="let stat of availableStats" [value]="stat.ID"
                     [attr.data-icon]="stat ? stat.imagePath : ''" class="left circle"> {{ stat.title }}

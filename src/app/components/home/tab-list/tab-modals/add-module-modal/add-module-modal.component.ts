@@ -8,6 +8,8 @@ import { StatService } from 'app/services/stat.service';
 
 import { Stat } from 'app/models/stat.model';
 
+declare const Materialize: any;
+
 @Component({
   selector: 'app-select-modal',
   templateUrl: './add-module-modal.component.html',
@@ -41,12 +43,15 @@ export class SelectModalComponent implements OnInit {
 
     console.log(this.availableStats);
   }
+
   onAddModule(moduleForm: NgForm) {
-    console.log(moduleForm.value);
-    this.moduleService.createModule(moduleForm.value);
-    moduleForm.reset();
-    this.selectedStat = '';
-    this.closeModal();
+    if (moduleForm.valid) {
+      console.log(moduleForm.value);
+      this.moduleService.createModule(moduleForm.value);
+      moduleForm.reset();
+      this.selectedStat = '';
+      this.closeModal();
+    }
   }
 
   onCancel(moduleForm: NgForm) {
