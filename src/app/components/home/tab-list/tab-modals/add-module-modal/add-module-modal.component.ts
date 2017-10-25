@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { ModuleService } from 'app/services/module.service';
 import { StatService } from 'app/services/stat.service';
+import { DatabaseService } from 'app/services/database.service';
 
 import { Stat } from 'app/models/stat.model';
 
@@ -27,9 +28,13 @@ export class SelectModalComponent implements OnInit {
 
   submitPressed = false;
 
+  resp: string;
+
+  err: string;
+
   @Output() onCreateModal: EventEmitter<any> = new EventEmitter();
 
-  constructor(private statService: StatService, private moduleService: ModuleService) { }
+  constructor(private statService: StatService, private moduleService: ModuleService, private databaseService: DatabaseService) { }
 
   closeModal() {
     this.modalActions.emit({action: 'modal', params: ['close']});
@@ -47,10 +52,22 @@ export class SelectModalComponent implements OnInit {
   onAddModule(moduleForm: NgForm) {
     if (moduleForm.valid) {
       console.log(moduleForm.value);
-      this.moduleService.createModule(moduleForm.value);
-      moduleForm.reset();
-      this.selectedStat = '';
-      this.closeModal();
+      this.databaseService.addModule(moduleForm.value).subscribe(
+        response => {
+          console.log(response);
+          this.resp = response;
+          this.moduleService.retrieveModules();
+        },
+        (error) => {
+          this.err = error.error;
+          Materialize.toast(this.err, 4000);
+        }
+      );
+      if (this.err) {
+
+      } else {
+        ///Close modal
+      }
     }
   }
 
